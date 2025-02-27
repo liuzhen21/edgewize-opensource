@@ -1,0 +1,10 @@
+---
+- name: Docker start
+  hosts: all
+  gather_facts: false
+  become: true
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: 执行docker启动的命令
+      raw: systemctl start docker

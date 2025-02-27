@@ -1,0 +1,20 @@
+---
+- name: Deploy docker 23.0.6
+  hosts: all
+  gather_facts: true
+  become: true
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: Copy shell file
+      copy:
+        src: "files/"
+        dest: "/tmp/docker/"
+        owner: root
+        group: root
+        mode: '0755'
+    
+    - name: 执行docker卸载的shell脚本
+      shell: /tmp/docker/uninstall.sh
+      args:
+        chdir: /tmp/docker

@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes  # If you need elevated privileges, enable become
+  gather_facts: false
+
+  tasks:
+    - name: 执行bash命令
+      raw: "{{ command }}"
+      register: ssh_command_result  # Register the result for later use

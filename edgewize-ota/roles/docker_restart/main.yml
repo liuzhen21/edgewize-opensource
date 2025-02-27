@@ -1,0 +1,10 @@
+---
+- name: Docker restart
+  hosts: all
+  gather_facts: false
+  become: true
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: 执行docker重新启动的命令
+      raw: systemctl restart docker
